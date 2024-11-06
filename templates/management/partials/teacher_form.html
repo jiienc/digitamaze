@@ -1,0 +1,18 @@
+<form id="teacherForm" method="post" action="{% if form.instance.pk %}{% url 'edit_teacher' teacher_id=form.instance.pk %}{% else %}{% url 'create_teacher' %}{% endif %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" class="form-control" value="{{ form.name.value|default_if_none:'' }}">
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" class="form-control" value="{{ form.email.value|default_if_none:'' }}">
+        {% for error in form.email.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

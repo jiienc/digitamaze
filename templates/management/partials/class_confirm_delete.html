@@ -1,0 +1,6 @@
+<form id="deleteClassForm" method="post" action="{% url 'delete_class' class_id=class.id %}">
+    {% csrf_token %}
+    <p>Are you sure you want to delete {{ class.name }}?</p>
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+</form>

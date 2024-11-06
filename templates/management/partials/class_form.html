@@ -1,0 +1,11 @@
+<form id="classForm" method="post" action="{% if form.instance.pk %}{% url 'edit_class' class_id=form.instance.pk %}{% else %}{% url 'create_class' %}{% endif %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" class="form-control" value="{{ form.name.value|default_if_none:'' }}">
+        {% for error in form.name.errors %}
+            <small class="text-danger">{{ error }}</small>
+        {% endfor %}
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
